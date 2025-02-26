@@ -1,0 +1,52 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+    <variables>
+        <variable type="" id="max_loss_alert">Max Loss Alert</variable>
+        <variable type="" id="expected_profit">Expected Profit</variable>
+        <variable type="" id="initial_amount">Initial Amount</variable>
+        <variable type="" id="win_amount">Win Amount</variable>
+        <variable type="" id="next_trade_condition">Next Trade Condition</variable>
+    </variables>
+
+    <block type="trade" x="-229" y="-91">
+        <field name="MARKET_LIST">volidx</field>
+        <field name="SUBMARKET_LIST">random_index</field>
+        <field name="SYMBOL_LIST">R_50</field>
+
+        <block type="controls_if">
+            <value name="IF0">
+                <block type="logic_compare">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                        <block type="math_arithmetic">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                                <block type="variables_get">
+                                    <field name="VAR">initial_amount</field>
+                                </block>
+                            </value>
+                            <value name="B">
+                                <block type="variables_get">
+                                    <field name="VAR">max_loss_alert</field>
+                                </block>
+                            </value>
+                        </block>
+                    </value>
+                    <value name="B">
+                        <block type="math_number">
+                            <field name="NUM">0</field>
+                        </block>
+                    </value>
+                </block>
+            </value>
+            <statement name="DO0">
+                <block type="text_print">
+                    <value name="TEXT">
+                        <block type="text">
+                            <field name="TEXT">Warning: Potential Loss Approaching!</field>
+                        </block>
+                    </value>
+                </block>
+            </statement>
+        </block>
+    </block>
+</xml>
